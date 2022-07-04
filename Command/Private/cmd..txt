@@ -1,0 +1,118 @@
+py to exe:
+auto-py-to-exe
+
+System Boot Time:
+systeminfo |findstr "System Boot Time"
+
+Installed App List:
+wmic product get name
+
+Serial Number:
+wmic diskdrive get model,name,SerialNumber
+
+Green Color:
+Color 02
+
+Red Color:
+Color 04
+
+Check Username:
+WhoAmI
+
+Changing Title of CMD:
+title Hacking The System
+
+Hide Folder:
+attrib +h +s +r foldername
+
+un hide folder
+attrib -h -s -r foldername
+
+DNS cache clear
+ipconfig /FlushDNS
+
+IP Address:
+ipconfig
+
+Safe Mode By Cmd On/Off
+
+On:-
+bcdedit /set {current} safeboot minimal
+
+Off:-
+bcdedit /deletevalue {current} safeboot
+
+About System:
+systeminfo
+
+Asking Google for Our Ping:
+ping google.com
+
+Opens Task Manager:
+taskmgr
+
+Lists the Tasks Running on System:
+tasklist
+
+Encrypt:
+cipher /E
+
+Decrypt:
+cipher /D
+
+About Windows:
+winver
+
+HDD Health Check:
+wmic diskdrive get status
+
+Disk Check:
+chkdsk D:
+
+Backup and Restore:
+sdclt
+
+Opens Calculator:
+calc
+
+Certificates:
+certmgr
+
+Change Computer Performance Settings:
+systempropertiesperformance
+
+Character Map:
+charmap
+
+Command Prompt:
+cmd
+
+Computer Management:
+compmgmt
+
+Control Panel:
+control
+
+Opens Device Manager:
+devmgmt
+
+DirectX Diagnostic Tool (Driver):
+dxdiag
+
+Opens Disk Cleanup:
+cleanmgr
+
+Disk Fragment:
+dfrgui
+
+Disk Management:
+diskmgmt
+
+Display:
+dpiscaling
+
+Display Switch:
+displayswitch
+
+Driver Verifier Manager:
+verifier

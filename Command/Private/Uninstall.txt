@@ -1,0 +1,137 @@
+* Uninstall "3D Builder":
+Get-AppxPackage *3dbuilder* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Alarms & Clock":
+Get-AppxPackage *Alarms* -AllUsers | Remove-AppxPackage
+
+* Uninstall "App Connector":
+Get-AppxPackage *Appconnector* -AllUsers | Remove-AppxPackage
+
+* Uninstall "App Installer":
+Get-AppxPackage *AppInstaller* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Calendar & Mail" Apps ToGetHer:
+Get-AppxPackage *Communicationsapps* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Calculator":
+Get-AppxPackage *WindowsCalculator* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Camera":
+Get-AppxPackage *Camera* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Cortona":
+Get-AppxPackage *Microsoft.549981C3F5F10* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Feedback Hub":
+Get-AppxPackage *Feedback* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Get Help":
+Get-AppxPackage *Microsoft.GetHelp* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Get Office":
+Get-AppxPackage *Officehub* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Get Started or Tips":
+Get-AppxPackage *Getstarted* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Groove Music":
+Get-AppxPackage *ZuneMusic* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Groove Music, Movies & TV" Apps ToGetHer:
+Get-AppxPackage *Zune* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Maps":
+Get-AppxPackage *Maps* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Messaging & Skype Video" Apps ToGetHer:
+Get-AppxPackage *Messaging* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Microsoft Solitaire Collection":
+Get-AppxPackage *Solitaire* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Microsoft Wallet":
+Get-AppxPackage *Wallet* -AllUsers | Remove-AppxPackage
+
+* Uninstall Microsoft Wi-Fi:
+Get-AppxPackage *Connectivitystore* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Money":
+Get-AppxPackage *Bingfinance* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Money, News, Sports & Weather" Apps ToGetHer:
+Get-AppxPackage *Bing* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Movies & TV" Apps ToGetHer:
+Get-AppxPackage *ZuneVideo* -AllUsers | Remove-AppxPackage
+
+* Uninstall "News":
+Get-AppxPackage *BingNews* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Notepad":
+Get-AppxPackage *WindowsNotepad* -AllUsers | Remove-AppxPackage
+
+* Uninstall "OneNote":
+Get-AppxPackage *Onenote* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Paid Wi-Fi & Cellular":
+Get-AppxPackage *OneConnect* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Paint":
+Get-AppxPackage *Paint* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Paint 3D":
+Get-AppxPackage *MSPaint* -AllUsers | Remove-AppxPackage
+
+* Uninstall "People":
+Get-AppxPackage *People* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Phone":
+Get-AppxPackage *CommsPhone* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Phone Companion":
+Get-AppxPackage *WindowsPhone* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Phone & Phone Companion" Apps ToGetHer:
+Get-AppxPackage *Phone* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Photos":
+Get-AppxPackage *Photos* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Skype":
+Get-AppxPackage *Skypeapp* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Sports":
+Get-AppxPackage *BingSports* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Sticky Notes":
+Get-AppxPackage *Sticky* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Sway":
+Get-AppxPackage *Sway* -AllUsers | Remove-AppxPackage
+
+* Uninstall "View 3D":
+Get-AppxPackage *3d* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Voice Recorder":
+Get-AppxPackage *SoundRecorder* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Weather":
+Get-AppxPackage *BingWeather* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Windows Holographic":
+Get-AppxPackage *Holographic* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Windows Store": (Be Very Careful! Own Your Risk)
+Get-AppxPackage *WindowsStore* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Your Phone":
+Get-AppxPackage *YourPhone* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Xbox":
+Get-AppxPackage *XboxApp* -AllUsers | Remove-AppxPackage
+
+* Uninstall "Xbox Game Bar":
+Get-AppxPackage Microsoft.XboxGamingOverlay  -AllUsers | Remove-AppxPackage
+
+For Reinstall
+Get-AppxPackage | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}

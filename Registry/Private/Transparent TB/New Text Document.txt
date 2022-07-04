@@ -1,0 +1,3 @@
+Computer\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+
+Create Dword 32 with Name "TaskbarAcrylicOpacity" set value 0

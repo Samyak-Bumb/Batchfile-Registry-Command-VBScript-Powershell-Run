@@ -1,0 +1,11 @@
+0 = OK Button,
+1 = OK / Cancel Button,
+2 = Abort / Retry / Ignore Button,
+3 = Yes / No / Cancel Button,
+4 = Yes / No Button,
+5 = Retry / Cancel Button
+
+16 = Critical Icon,
+32 = Help Icon,
+48 = Warning Icon,
+64 = Information Icon

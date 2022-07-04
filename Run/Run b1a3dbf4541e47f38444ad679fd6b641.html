@@ -1,0 +1,669 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Run</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="b1a3dbf4-541e-47f3-8444-ad679fd6b641" class="page sans"><header><h1 class="page-title">Run</h1></header><div class="page-body"><p id="285e3b0c-57c7-46f3-9461-8b2b24c37da9" class=""><strong><strong>optionalfeatures</strong></strong></p><p id="1d820f0c-8fc8-40e9-9eec-3240968dfec8" class=""><strong><strong>devmgmt.msc</strong></strong></p><p id="970a30d6-ca6f-46a6-8c02-a7a778d09412" class=""><strong><strong>Run Malicious Software Removal Tool — “mrt”</strong></strong></p><div id="4a9b7655-c88b-4407-a338-03f010d80e1a" class="collection-content"><h4 class="collection-title"></h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Run Command</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Opens What?</th></tr></thead><tbody><tr id="cfb74766-95ab-4d00-b18f-9580316cdd93"><td class="cell-title"><a href="https://www.notion.so/winver-cfb7476695ab4d00b18f9580316cdd93">winver</a></td><td class="cell-fmLd">About Windows</td></tr><tr id="e7e491cd-9c98-40f1-914d-a996cea2f4d7"><td class="cell-title"><a href="https://www.notion.so/devicepairingwizard-e7e491cd9c9840f1914da996cea2f4d7">devicepairingwizard</a></td><td class="cell-fmLd">Add a Device</td></tr><tr id="57247fa9-7c39-4f6e-9a9a-eb3f35c7dd23"><td class="cell-title"><a href="https://www.notion.so/hdwwiz-57247fa97c394f6e9a9aeb3f35c7dd23">hdwwiz</a></td><td class="cell-fmLd">Add Hardware Wizard</td></tr><tr id="ec89524a-a2d9-4c64-881c-67bb80bd92bb"><td class="cell-title"><a href="https://www.notion.so/control-admintools-ec89524aa2d94c64881c67bb80bd92bb">control admintools</a></td><td class="cell-fmLd">Administrative Tools</td></tr><tr id="d76e8cbd-95a2-4fbf-b5c7-3dbb2a5514be"><td class="cell-title"><a href="https://www.notion.so/systempropertiesadvanced-d76e8cbd95a24fbfb5c73dbb2a5514be">systempropertiesadvanced</a></td><td class="cell-fmLd">Advanced System Settings</td></tr><tr id="b358c866-a1b9-4854-865a-93493785c4c2"><td class="cell-title"><a href="https://www.notion.so/Netplwiz-b358c866a1b94854865a93493785c4c2">Netplwiz</a></td><td class="cell-fmLd">Advanced User Accounts Control Panel</td></tr><tr id="7faa63e4-e882-4ada-bdfb-4592bafac809"><td class="cell-title"><a href="https://www.notion.so/control-userpasswords2-7faa63e4e8824adabdfb4592bafac809">control userpasswords2</a></td><td class="cell-fmLd">Advanced User Control Panel</td></tr><tr id="bd40d15e-0b24-433d-9e96-cad589ae315f"><td class="cell-title"><a href="https://www.notion.so/control-bd40d15e0b24433d9e96cad589ae315f">control</a></td><td class="cell-fmLd">All Control Panel Items</td></tr><tr id="e385d942-7d9c-42db-9a87-533546dbde09"><td class="cell-title"><a href="https://www.notion.so/AppData-e385d9427d9c42db9a87533546dbde09">%AppData%</a></td><td class="cell-fmLd">App Data</td></tr><tr id="958da511-3a79-41d5-80ce-f74526ecfa8f"><td class="cell-title"><a href="https://www.notion.so/azman-msc-958da5113a7941d580cef74526ecfa8f">azman.msc</a></td><td class="cell-fmLd">Authorization Manager</td></tr><tr id="2ad7d58c-aa33-44df-a14f-ce712f4a7d43"><td class="cell-title"><a href="https://www.notion.so/control-color-2ad7d58caa3344dfa14fce712f4a7d43">control color</a></td><td class="cell-fmLd">Personalization Settings</td></tr><tr id="c40916c3-2646-4931-b96a-e0d0ef55a177"><td class="cell-title"><a href="https://www.notion.so/control-desktop-c40916c326464931b96ae0d0ef55a177">control desktop</a></td><td class="cell-fmLd">Personalization Settings</td></tr><tr id="cec73cc6-02c6-4870-81d8-8b4acc674d2e"><td class="cell-title"><a href="https://www.notion.so/fsquirt-cec73cc602c6487081d88b4acc674d2e">fsquirt</a></td><td class="cell-fmLd">Bluetooth File Transfer</td></tr><tr id="67772789-b75d-409d-b0a8-ad0bf9eb5fcc"><td class="cell-title"><a href="https://www.notion.so/bootim-67772789b75d409db0a8ad0bf9eb5fcc">bootim</a></td><td class="cell-fmLd">Boot Options</td></tr><tr id="69dbbab2-b908-4289-87e4-3a53adeaeee6"><td class="cell-title"><a href="https://www.notion.so/c-69dbbab2b908428987e43a53adeaeee6">c:</a></td><td class="cell-fmLd">C Drive</td></tr><tr id="997cc8b3-2870-44a5-a71e-6ea1a2ca24e3"><td class="cell-title"><a href="https://www.notion.so/calc-997cc8b3287044a5a71e6ea1a2ca24e3">calc</a></td><td class="cell-fmLd">Calculator</td></tr><tr id="029121f7-d5df-471a-b1aa-f504a146a73e"><td class="cell-title"><a href="https://www.notion.so/certmgr-msc-029121f7d5df471ab1aaf504a146a73e">certmgr.msc</a></td><td class="cell-fmLd">Certificate Manager</td></tr><tr id="60cb2aed-a9e2-4f7e-a970-46937fca9835"><td class="cell-title"><a href="https://www.notion.so/sysdm-cpl-60cb2aeda9e24f7ea97046937fca9835">sysdm.cpl</a></td><td class="cell-fmLd">Change Computer Settings</td></tr><tr id="410cb653-5f0e-41e0-81fa-50841e3e800e"><td class="cell-title"><a href="https://www.notion.so/systempropertiescomputername-410cb6535f0e41e081fa50841e3e800e">systempropertiescomputername</a></td><td class="cell-fmLd">Change Computer Settings</td></tr><tr id="1d38c78d-3cc7-451a-b2f8-2371d8e6d239"><td class="cell-title"><a href="https://www.notion.so/systempropertiesdataexecutionprevention-1d38c78d3cc7451ab2f82371d8e6d239">systempropertiesdataexecutionprevention</a></td><td class="cell-fmLd">Change Data Execution Prevention Settings</td></tr><tr id="7ea08f85-6ad4-4ca1-897c-6063350b5367"><td class="cell-title"><a href="https://www.notion.so/printui-7ea08f856ad44ca1897c6063350b5367">printui</a></td><td class="cell-fmLd">Change Printing Settings</td></tr><tr id="812f772f-8159-4d40-bd15-f523f9a8ed3e"><td class="cell-title"><a href="https://www.notion.so/charmap-812f772f81594d40bd15f523f9a8ed3e">charmap</a></td><td class="cell-fmLd">Character Map</td></tr><tr id="62d68959-b268-484f-a3d9-3179deb83c3e"><td class="cell-title"><a href="https://www.notion.so/chkdsk-62d68959b268484fa3d93179deb83c3e">chkdsk</a></td><td class="cell-fmLd">Check Disk</td></tr><tr id="fd34e8ae-7f69-4c90-a08b-be6a2fa2e977"><td class="cell-title"><a href="https://www.notion.so/cttune-fd34e8ae7f694c90a08bbe6a2fa2e977">cttune</a></td><td class="cell-fmLd">ClearType Text tuner</td></tr><tr id="d9d37dcf-3b18-4d88-96e4-94a9e1b4f5b9"><td class="cell-title"><a href="https://www.notion.so/cliconfg-d9d37dcf3b184d8896e494a9e1b4f5b9">cliconfg</a></td><td class="cell-fmLd">Client Configuration Utility</td></tr><tr id="3cd4a683-c751-4d48-b882-43b061b9bb32"><td class="cell-title"><a href="https://www.notion.so/colorcpl-3cd4a683c7514d48b88243b061b9bb32">colorcpl</a></td><td class="cell-fmLd">Color Management</td></tr><tr id="bb709faf-da3e-4fc0-9991-9d79541aea9c"><td class="cell-title"><a href="https://www.notion.so/cmd-bb709fafda3e4fc099919d79541aea9c">cmd</a></td><td class="cell-fmLd">Command Prompt</td></tr><tr id="7e9df8ae-da8e-49fb-b2de-f1980adde8ce"><td class="cell-title"><a href="https://www.notion.so/CommonProgramFiles-7e9df8aeda8e49fbb2def1980adde8ce">%CommonProgramFiles%</a></td><td class="cell-fmLd">Common Files</td></tr><tr id="559627ce-1fb2-4d7a-9b3b-ef479223754e"><td class="cell-title"><a href="https://www.notion.so/comp-559627ce1fb24d7a9b3bef479223754e">comp</a></td><td class="cell-fmLd">Compare Files Command</td></tr><tr id="a2630056-02e8-40ec-86d1-c3df39ee3313"><td class="cell-title"><a href="https://www.notion.so/comexp-msc-a263005602e840ec86d1c3df39ee3313">comexp.msc</a></td><td class="cell-fmLd">Component Services</td></tr><tr id="4868c234-0c19-4adf-9487-df6e6d137ae8"><td class="cell-title"><a href="https://www.notion.so/compmgmt-msc-4868c2340c194adf9487df6e6d137ae8">compmgmt.msc</a></td><td class="cell-fmLd">Computer Management</td></tr><tr id="7078e1ce-7414-495f-be26-b449dcb82e3b"><td class="cell-title"><a href="https://www.notion.so/CompMgmtLauncher-7078e1ce7414495fbe26b449dcb82e3b">CompMgmtLauncher</a></td><td class="cell-fmLd">Computer Management</td></tr><tr id="cfa2920c-6c52-4892-a55c-9c88b435c3ab"><td class="cell-title"><a href="https://www.notion.so/mmc-cfa2920c6c524892a55c9c88b435c3ab">mmc</a></td><td class="cell-fmLd">Console Root</td></tr><tr id="fbe81d6e-db1f-46d6-a5b1-1c915cdb5574"><td class="cell-title"><a href="https://www.notion.so/wab-fbe81d6edb1f46d6a5b11c915cdb5574">wab</a></td><td class="cell-fmLd">Contacts</td></tr><tr id="bfa2acd7-4999-4c5e-90d8-1bf070b12a9e"><td class="cell-title"><a href="https://www.notion.so/timedate-cpl-bfa2acd749994c5e90d81bf070b12a9e">timedate.cpl</a></td><td class="cell-fmLd">Date and time</td></tr><tr id="b844638b-af7b-4417-9ced-7821d780937b"><td class="cell-title"><a href="https://www.notion.so/debug-b844638baf7b44179ced7821d780937b">debug</a></td><td class="cell-fmLd">Debug Folder</td></tr><tr id="63fdb90e-ae82-442a-a897-26e5f48d5c21"><td class="cell-title"><a href="https://www.notion.so/computerdefaults-63fdb90eae82442aa89726e5f48d5c21">computerdefaults</a></td><td class="cell-fmLd">Default Apps</td></tr><tr id="c358ddec-0129-4030-b44f-fa2b3df63350"><td class="cell-title"><a href="https://www.notion.so/defrag-c358ddec01294030b44ffa2b3df63350">defrag</a></td><td class="cell-fmLd">Defrag Command</td></tr><tr id="e8c7a75a-5f8b-4794-b955-eca5a1f68c64"><td class="cell-title"><a href="https://www.notion.so/devmgmt-msc-e8c7a75a5f8b4794b955eca5a1f68c64">devmgmt.msc</a></td><td class="cell-fmLd">Device Manager</td></tr><tr id="ff4860cc-df80-4d23-836e-e5ac11673aef"><td class="cell-title"><a href="https://www.notion.so/hdwwiz-cpl-ff4860ccdf804d23836ee5ac11673aef">hdwwiz.cpl</a></td><td class="cell-fmLd">Device Manager</td></tr><tr id="aecb6c35-03b8-4954-906a-f5d1d81a2766"><td class="cell-title"><a href="https://www.notion.so/control-printers-aecb6c3503b84954906af5d1d81a2766">control printers</a></td><td class="cell-fmLd">Devices and Printers</td></tr><tr id="7247a26a-70a6-4642-9676-bcf2ac404e5f"><td class="cell-title"><a href="https://www.notion.so/msdt-7247a26a70a646429676bcf2ac404e5f">msdt</a></td><td class="cell-fmLd">Diagnostics Troubleshooting Wizard</td></tr><tr id="35af303c-e466-4143-b404-821affb39963"><td class="cell-title"><a href="https://www.notion.so/tabcal-35af303ce4664143b404821affb39963">tabcal</a></td><td class="cell-fmLd">Digital Calibration Tool</td></tr><tr id="7c044c74-cfe1-4312-9319-2311380b8f9d"><td class="cell-title"><a href="https://www.notion.so/dxdiag-7c044c74cfe1431293192311380b8f9d">dxdiag</a></td><td class="cell-fmLd">DirectX Diagnostic Tool</td></tr><tr id="0e30bf7a-a28c-42b4-89ae-6de1fc9a61ff"><td class="cell-title"><a href="https://www.notion.so/cleanmgr-0e30bf7aa28c42b489ae6de1fc9a61ff">cleanmgr</a></td><td class="cell-fmLd">Disk Cleanup</td></tr><tr id="1d54d10e-bea5-4f9b-a91f-53ed79cebc84"><td class="cell-title"><a href="https://www.notion.so/diskmgmt-msc-1d54d10ebea54f9ba91f53ed79cebc84">diskmgmt.msc</a></td><td class="cell-fmLd">Disk Management</td></tr><tr id="478786ea-6590-4df0-9b69-fc09473f4c56"><td class="cell-title"><a href="https://www.notion.so/diskpart-478786ea65904df09b69fc09473f4c56">diskpart</a></td><td class="cell-fmLd">Diskpart Command</td></tr><tr id="bde3720d-1c17-4dd5-b0d6-8518c6e26750"><td class="cell-title"><a href="https://www.notion.so/dccw-bde3720d1c174dd5b0d68518c6e26750">dccw</a></td><td class="cell-fmLd">Display Color Calibration</td></tr><tr id="67292950-2501-47b5-89c0-ca4d17c39016"><td class="cell-title"><a href="https://www.notion.so/desk-cpl-67292950250147b589c0ca4d17c39016">desk.cpl</a></td><td class="cell-fmLd">Display Settings</td></tr><tr id="206b0465-06a6-4317-a13d-71fdcdda7c38"><td class="cell-title"><a href="https://www.notion.so/dpiscaling-206b046506a64317a13d71fdcdda7c38">dpiscaling</a></td><td class="cell-fmLd">Display Settings</td></tr><tr id="11ff64d3-0604-4726-a875-8c89e4ba5a33"><td class="cell-title"><a href="https://www.notion.so/drwatson-11ff64d306044726a8758c89e4ba5a33">drwatson</a></td><td class="cell-fmLd">Dr. Watson</td></tr><tr id="9e77e0db-63c3-4e68-ad28-b570e4983ea8"><td class="cell-title"><a href="https://www.notion.so/verifier-9e77e0db63c34e68ad28b570e4983ea8">verifier</a></td><td class="cell-fmLd">Driver Verifier Manager</td></tr><tr id="0d8376f7-ea6f-4f97-8607-7d6cedb3de43"><td class="cell-title"><a href="https://www.notion.so/control-access-cpl-0d8376f7ea6f4f9786077d6cedb3de43">control access.cpl</a></td><td class="cell-fmLd">Ease of Access Center</td></tr><tr id="0af1d8dc-6bea-4641-ab06-b6b865bc940b"><td class="cell-title"><a href="https://www.notion.so/edit-0af1d8dc6bea4641ab06b6b865bc940b">edit</a></td><td class="cell-fmLd">Edit Command</td></tr><tr id="63f90f79-ba3e-4ddf-88a7-1c16d146b415"><td class="cell-title"><a href="https://www.notion.so/eventvwr-63f90f79ba3e4ddf88a71c16d146b415">eventvwr</a></td><td class="cell-fmLd">Event Viewer</td></tr><tr id="540a9a71-1501-46cb-a56d-1872c3e70f59"><td class="cell-title"><a href="https://www.notion.so/excel-540a9a71150146cba56d1872c3e70f59">excel</a></td><td class="cell-fmLd">Excel</td></tr><tr id="d8cee5cb-87a9-4352-b802-aa1d0afbb9fb"><td class="cell-title"><a href="https://www.notion.so/Excel-safe-d8cee5cb87a94352b802aa1d0afbb9fb">Excel /safe</a></td><td class="cell-fmLd">Excel in Safe Mode</td></tr><tr id="a0784154-6d4d-4869-80ad-59118157714d"><td class="cell-title"><a href="https://www.notion.so/nslookup-a07841546d4d486980ad59118157714d">nslookup</a></td><td class="cell-fmLd">Execute NSLOOKUP Command</td></tr><tr id="90e32b45-6ba0-439b-acdf-00c127147b7f"><td class="cell-title"><a href="https://www.notion.so/fxscover-90e32b456ba0439bacdf00c127147b7f">fxscover</a></td><td class="cell-fmLd">Fax Cover Page Editor</td></tr><tr id="5c3dd1e0-6057-450e-962b-606cd4cc5cd4"><td class="cell-title"><a href="https://www.notion.so/rekeywiz-5c3dd1e06057450e962b606cd4cc5cd4">rekeywiz</a></td><td class="cell-fmLd">File Encryption</td></tr><tr id="868e7b92-6363-4575-9adc-4020cad77de2"><td class="cell-title"><a href="https://www.notion.so/explorer-868e7b92636345759adc4020cad77de2">explorer</a></td><td class="cell-fmLd">File Explorer</td></tr><tr id="05429f93-ff88-4d45-b589-443727f9e342"><td class="cell-title"><a href="https://www.notion.so/control-folders-05429f93ff884d45b589443727f9e342">control folders</a></td><td class="cell-fmLd">File Explorer Options</td></tr><tr id="777b1187-63f6-400e-8569-ef9442028c3d"><td class="cell-title"><a href="https://www.notion.so/filehistory-777b118763f6400e8569ef9442028c3d">filehistory</a></td><td class="cell-fmLd">File History</td></tr><tr id="f8f172d1-21da-44ac-8565-6d11c1c6bb83"><td class="cell-title"><a href="https://www.notion.so/sigverif-f8f172d121da44ac85656d11c1c6bb83">sigverif</a></td><td class="cell-fmLd">File Signature Verification</td></tr><tr id="e1e2ac06-4adb-4534-8970-8b757b15759c"><td class="cell-title"><a href="https://www.notion.so/firefox-e1e2ac064adb453489708b757b15759c">firefox</a></td><td class="cell-fmLd">Firefox</td></tr><tr id="48bc1c0e-dd0c-41c2-8a6e-9e2538cceec6"><td class="cell-title"><a href="https://www.notion.so/flashplayerapp-48bc1c0edd0c41c28a6e9e2538cceec6">flashplayerapp</a></td><td class="cell-fmLd">Flash Player Settings Manager</td></tr><tr id="6f57723d-4940-496a-90ff-6be5247bc2b4"><td class="cell-title"><a href="https://www.notion.so/control-fonts-6f57723d4940496a90ff6be5247bc2b4">control fonts</a></td><td class="cell-fmLd">Fonts</td></tr><tr id="f9422178-c45f-4d75-acd2-34403c874959"><td class="cell-title"><a href="https://www.notion.so/fonts-f9422178c45f4d75acd234403c874959">fonts</a></td><td class="cell-fmLd">Fonts Folder</td></tr><tr id="c7e248db-4690-4e9a-87ae-aa11a9ef9555"><td class="cell-title"><a href="https://www.notion.so/ftp-c7e248db46904e9a87aeaa11a9ef9555">ftp</a></td><td class="cell-fmLd">FTP Command</td></tr><tr id="5629a7d7-58ed-47a8-94ff-42ded59d7445"><td class="cell-title"><a href="https://www.notion.so/joy-cpl-5629a7d758ed47a894ff42ded59d7445">joy.cpl</a></td><td class="cell-fmLd">Game Controllers</td></tr><tr id="77cdb3f3-e4e1-476c-9eb6-20350738f0e4"><td class="cell-title"><a href="https://www.notion.so/control-appwiz-cpl-1-77cdb3f3e4e1476c9eb620350738f0e4">control appwiz.cpl,,1</a></td><td class="cell-fmLd">Get Programs</td></tr><tr id="b5d2a8dd-0243-48da-be7e-ff0f45629f18"><td class="cell-title"><a href="https://www.notion.so/systempropertieshardware-b5d2a8dd024348dabe7eff0f45629f18">systempropertieshardware</a></td><td class="cell-fmLd">Hardware Settings</td></tr><tr id="6fb67913-60ed-49f7-863a-e487c6c49d2a"><td class="cell-title"><a href="https://www.notion.so/HomeDrive-6fb6791360ed49f7863ae487c6c49d2a">%HomeDrive%</a></td><td class="cell-fmLd">Home Drive</td></tr><tr id="a1a0eee8-ce14-4857-9c3c-0ded14ac56a6"><td class="cell-title"><a href="https://www.notion.so/HomePath-a1a0eee8ce1448579c3c0ded14ac56a6">%HomePath%</a></td><td class="cell-fmLd">Home Path</td></tr><tr id="ea5e953a-c28b-46b5-8402-46df2d955da5"><td class="cell-title"><a href="https://www.notion.so/iexpress-ea5e953ac28b46b5840246df2d955da5">iexpress</a></td><td class="cell-fmLd">Iexpress Wizard</td></tr><tr id="80b6a92a-c93e-4419-93ee-ebaa66b91eb8"><td class="cell-title"><a href="https://www.notion.so/wabmig-80b6a92ac93e441993eeebaa66b91eb8">wabmig</a></td><td class="cell-fmLd">Import to Windows Contacts</td></tr><tr id="e44864ed-584d-4081-9b6f-a815a55ea236"><td class="cell-title"><a href="https://www.notion.so/irprops-cpl-e44864ed584d40819b6fa815a55ea236">irprops.cpl</a></td><td class="cell-fmLd">Infrared</td></tr><tr id="dacf7fcf-0330-44f5-a720-e5e5b39574e6"><td class="cell-title"><a href="https://www.notion.so/iexplore-dacf7fcf033044f5a720e5e5b39574e6">iexplore</a></td><td class="cell-fmLd">Internet Explorer</td></tr><tr id="656e4ca5-7cc7-49d8-a644-98122ebc042b"><td class="cell-title"><a href="https://www.notion.so/inetcpl-cpl-656e4ca57cc749d8a64498122ebc042b">inetcpl.cpl</a></td><td class="cell-fmLd">Internet Properties</td></tr><tr id="36fec138-ecb9-4757-bed7-294aa18928da"><td class="cell-title"><a href="https://www.notion.so/javaws-36fec138ecb94757bed7294aa18928da">javaws</a></td><td class="cell-fmLd">Java Web Start</td></tr><tr id="11086af0-aff2-4202-93d9-cd92b48fb14e"><td class="cell-title"><a href="https://www.notion.so/control-keyboard-11086af0aff2420293d9cd92b48fb14e">control keyboard</a></td><td class="cell-fmLd">Keyboard Properties</td></tr><tr id="34777f34-bb30-4365-aeba-af88c543eefe"><td class="cell-title"><a href="https://www.notion.so/main-cpl-keyboard-34777f34bb304365aebaaf88c543eefe">main.cpl keyboard</a></td><td class="cell-fmLd">Keyboard Properties</td></tr><tr id="11b4f1ec-8767-4a81-b063-ad3239eb3a6f"><td class="cell-title"><a href="https://www.notion.so/lpksetup-11b4f1ec87674a81b063ad3239eb3a6f">lpksetup</a></td><td class="cell-fmLd">Language Pack Installer</td></tr><tr id="b4c50c0d-2e7a-437c-8000-8ae47c86f72e"><td class="cell-title"><a href="https://www.notion.so/gpedit-msc-b4c50c0d2e7a437c80008ae47c86f72e">gpedit.msc</a></td><td class="cell-fmLd">Local Group Policy Editor</td></tr><tr id="48a0fb83-c863-48f2-a899-4de789581312"><td class="cell-title"><a href="https://www.notion.so/secpol-msc-48a0fb83c86348f2a8994de789581312">secpol.msc</a></td><td class="cell-fmLd">Local Security Policy Editor</td></tr><tr id="f7569327-6134-4239-a362-efaca19a272f"><td class="cell-title"><a href="https://www.notion.so/lusrmgr-msc-f756932761344239a362efaca19a272f">lusrmgr.msc</a></td><td class="cell-fmLd">Local Users and Groups</td></tr><tr id="d39e5348-7128-4e44-80f5-caefaace2d2b"><td class="cell-title"><a href="https://www.notion.so/telephon-cpl-d39e534871284e4480f5caefaace2d2b">telephon.cpl</a></td><td class="cell-fmLd">Location Information</td></tr><tr id="b76ae7da-7f2f-4f3b-ad89-8e5d7d311a14"><td class="cell-title"><a href="https://www.notion.so/logoff-b76ae7da7f2f4f3bad898e5d7d311a14">logoff</a></td><td class="cell-fmLd">Log out of computer</td></tr><tr id="9490aaaf-1e9e-4fdc-b17c-28739636fe98"><td class="cell-title"><a href="https://www.notion.so/magnify-9490aaaf1e9e4fdcb17c28739636fe98">magnify</a></td><td class="cell-fmLd">Magnifier</td></tr><tr id="018446d7-dc1e-4aa3-8550-b0dedd6258f1"><td class="cell-title"><a href="https://www.notion.so/TpmInit-018446d7dc1e4aa38550b0dedd6258f1">TpmInit</a></td><td class="cell-fmLd">Manage TPM Security Hardware</td></tr><tr id="58d69dcd-0186-4c11-abeb-fee866730cc6"><td class="cell-title"><a href="https://www.notion.so/mip-58d69dcd01864c11abebfee866730cc6">mip</a></td><td class="cell-fmLd">Math Input Panel</td></tr><tr id="435913c1-fcdc-4d1e-892c-9851c4e3d183"><td class="cell-title"><a href="https://www.notion.so/msaccess-435913c1fcdc4d1e892c9851c4e3d183">msaccess</a></td><td class="cell-fmLd">Microsoft Access</td></tr><tr id="3355f321-54dd-4a42-bf99-2fc649bf53c9"><td class="cell-title"><a href="https://www.notion.so/iscsicpl-3355f32154dd4a42bf992fc649bf53c9">iscsicpl</a></td><td class="cell-fmLd">Microsoft iSCSC Initiator Configurator Tool</td></tr><tr id="dc958812-93e8-4665-b45c-c4899adf1ee9"><td class="cell-title"><a href="https://www.notion.so/Outlook-dc95881293e84665b45cc4899adf1ee9">Outlook</a></td><td class="cell-fmLd">Microsoft Outlook</td></tr><tr id="8514c038-4c14-45aa-9c8c-e7abbd50a133"><td class="cell-title"><a href="https://www.notion.so/Outlook-safe-8514c0384c1445aa9c8ce7abbd50a133">Outlook /safe</a></td><td class="cell-fmLd">Microsoft Outlook Safe Mode</td></tr><tr id="58ccae49-6c5d-43d6-84d4-e3ea5d3e37a7"><td class="cell-title"><a href="https://www.notion.so/mspaint-58ccae496c5d43d684d4e3ea5d3e37a7">mspaint</a></td><td class="cell-fmLd">Microsoft Paint</td></tr><tr id="7d034145-bb90-4c98-89e3-e78f48edf40b"><td class="cell-title"><a href="https://www.notion.so/powerpnt-7d034145bb904c9889e3e78f48edf40b">powerpnt</a></td><td class="cell-fmLd">Microsoft PowerPoint</td></tr><tr id="91fab9f6-f2cc-41a4-8af3-05040d0afc8c"><td class="cell-title"><a href="https://www.notion.so/Powerpoint-safe-91fab9f6f2cc41a48af305040d0afc8c">Powerpoint /safe</a></td><td class="cell-fmLd">Microsoft PowerPoint Safe Mode</td></tr><tr id="1fb1b3f5-009b-4c8c-92b4-b6498f02e992"><td class="cell-title"><a href="https://www.notion.so/regsvr32-1fb1b3f5009b4c8c92b4b6498f02e992">regsvr32</a></td><td class="cell-fmLd">Microsoft Registry Server</td></tr><tr id="1dc86a92-8419-45ee-8a1e-9cc1587a5017"><td class="cell-title"><a href="https://www.notion.so/recdisc-1dc86a92841945ee8a1e9cc1587a5017">recdisc</a></td><td class="cell-fmLd">Microsoft Windows Repair Disc</td></tr></tbody></table></div><div id="1fa52512-2909-4df7-badf-5f85da22ee81" class="collection-content"><h4 class="collection-title"></h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Run Command</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Opens What?</th></tr></thead><tbody><tr id="a6bccb33-dd2d-4707-8ea8-48ef39b7cad5"><td class="cell-title"><a href="https://www.notion.so/main-cpl-a6bccb33dd2d47078ea848ef39b7cad5">main.cpl</a></td><td class="cell-BMX`">Mouse Properties</td></tr><tr id="09a4222e-cde0-4f5b-b4a5-a2692b18054d"><td class="cell-title"><a href="https://www.notion.so/narrator-09a4222ecde04f5bb4a5a2692b18054d">narrator</a></td><td class="cell-BMX`">Narrator Settings</td></tr><tr id="207ceb21-fc5f-4e0b-adb0-9ed6d86cf5d0"><td class="cell-title"><a href="https://www.notion.so/utilman-207ceb21fc5f4e0badb09ed6d86cf5d0">utilman</a></td><td class="cell-BMX`">Narrator Settings</td></tr><tr id="21ee787a-5176-42e8-aeb8-62316b0b2ad3"><td class="cell-title"><a href="https://www.notion.so/control-netconnections-21ee787a517642e8aeb862316b0b2ad3">control netconnections</a></td><td class="cell-BMX`">Network Connections</td></tr><tr id="5830c71c-e9dc-424a-b220-7c5854902cde"><td class="cell-title"><a href="https://www.notion.so/ncpa-cpl-5830c71ce9dc424ab2207c5854902cde">ncpa.cpl</a></td><td class="cell-BMX`">Network Connections</td></tr><tr id="5337b52e-10b8-44af-9507-2a19cad1d130"><td class="cell-title"><a href="https://www.notion.so/LogonServer-5337b52e10b844af95072a19cad1d130">%LogonServer%</a></td><td class="cell-BMX`">Network Server Path</td></tr><tr id="7cebe7fd-35d8-4138-974d-ef7c6ce97dbc"><td class="cell-title"><a href="https://www.notion.so/notepad-7cebe7fd35d84138974def7c6ce97dbc">notepad</a></td><td class="cell-BMX`">Notepad</td></tr><tr id="28164007-d1cd-4bba-9a27-a9553ab38ebf"><td class="cell-title"><a href="https://www.notion.so/odbcconf-28164007d1cd4bba9a27a9553ab38ebf">odbcconf</a></td><td class="cell-BMX`">ODBC configuration</td></tr><tr id="966eea31-28f6-4fc5-84ef-1bbc67d25d79"><td class="cell-title"><a href="https://www.notion.so/odbcad32-966eea3128f64fc584ef1bbc67d25d79">odbcad32</a></td><td class="cell-BMX`">ODBC Data Source Administrator</td></tr><tr id="07d36d85-4032-4100-8789-7827685a16c7"><td class="cell-title"><a href="https://www.notion.so/osk-07d36d854032410087897827685a16c7">osk</a></td><td class="cell-BMX`">On-Screen Keyboard</td></tr><tr id="79afa208-af48-4fe7-b655-263b1d2055b8"><td class="cell-title"><a href="https://www.notion.so/mailto-79afa208af484fe7b655263b1d2055b8">mailto:</a></td><td class="cell-BMX`">Open Default Mail Application</td></tr><tr id="96c51dd8-8975-4ca0-b7ab-d84507c4f97e"><td class="cell-title"><a href="https://www.notion.so/Website-address-96c51dd889754ca0b7abd84507c4f97e">Website address</a></td><td class="cell-BMX`">Open entered URL in default browser</td></tr><tr id="34261acc-e59e-4a82-9a05-16eb28223c3a"><td class="cell-title"><a href="https://www.notion.so/shell-recyclebinfolder-34261acce59e4a829a0516eb28223c3a">shell:recyclebinfolder</a></td><td class="cell-BMX`">Open Recycle Bin</td></tr><tr id="4aa56768-58e1-43f2-8ac9-9cb76e937fea"><td class="cell-title"><a href="https://www.notion.so/dfrgui-4aa5676858e143f28ac99cb76e937fea">dfrgui</a></td><td class="cell-BMX`">Optimize Drives</td></tr><tr id="37353361-165d-4402-8f33-2f2fcfd425da"><td class="cell-title"><a href="https://www.notion.so/pbrush-37353361165d44028f332f2fcfd425da">pbrush</a></td><td class="cell-BMX`">Paint</td></tr><tr id="e5e4720c-be2e-4e04-9ce9-c746e3b53a60"><td class="cell-title"><a href="https://www.notion.so/tabletpc-cpl-e5e4720cbe2e4e049ce9c746e3b53a60">tabletpc.cpl</a></td><td class="cell-BMX`">Pen and Touch Settings</td></tr><tr id="11aa3fdb-5d46-4ba9-9b74-2593bb3ae129"><td class="cell-title"><a href="https://www.notion.so/perfmon-11aa3fdb5d464ba99b742593bb3ae129">perfmon</a></td><td class="cell-BMX`">Performance Monitor</td></tr><tr id="f4007477-77f1-40ef-b5d3-319e0f9263e1"><td class="cell-title"><a href="https://www.notion.so/systempropertiesperformance-f400747777f140efb5d3319e0f9263e1">systempropertiesperformance</a></td><td class="cell-BMX`">Performance Options</td></tr><tr id="7c525534-e191-4689-a5c6-8b26cd1a7c26"><td class="cell-title"><a href="https://www.notion.so/dialer-7c525534e1914689a5c68b26cd1a7c26">dialer</a></td><td class="cell-BMX`">Phone Dialer</td></tr><tr id="dec8ac00-3b88-476d-a0da-44f937966c76"><td class="cell-title"><a href="https://www.notion.so/dvdplay-dec8ac003b88476da0da44f937966c76">dvdplay</a></td><td class="cell-BMX`">Play DVD</td></tr><tr id="40095f6f-b7bc-4fc6-9da2-df4e466fc019"><td class="cell-title"><a href="https://www.notion.so/powercfg-cpl-40095f6fb7bc4fc69da2df4e466fc019">powercfg.cpl</a></td><td class="cell-BMX`">Power Options</td></tr><tr id="4a20e88c-e5f3-44d0-a3c9-8c8dc969b716"><td class="cell-title"><a href="https://www.notion.so/presentationsettings-4a20e88ce5f344d0a3c98c8dc969b716">presentationsettings</a></td><td class="cell-BMX`">Presentation Settings</td></tr><tr id="4577c892-7227-4dfd-95b5-7c1a74f30154"><td class="cell-title"><a href="https://www.notion.so/printmanagement-msc-4577c89272274dfd95b57c1a74f30154">printmanagement.msc</a></td><td class="cell-BMX`">Print Management</td></tr><tr id="1d77b7e4-9785-4a5f-8994-262d8aa41a9f"><td class="cell-title"><a href="https://www.notion.so/printbrmui-1d77b7e497854a5f8994262d8aa41a9f">printbrmui</a></td><td class="cell-BMX`">Printer Migration</td></tr><tr id="3db5eb09-5e52-4407-b449-a77b820f4e94"><td class="cell-title"><a href="https://www.notion.so/eudcedit-3db5eb095e524407b449a77b820f4e94">eudcedit</a></td><td class="cell-BMX`">Private Character Editor</td></tr><tr id="29d2b535-3b3e-4c49-9c80-ddf60a4aa637"><td class="cell-title"><a href="https://www.notion.so/AllUsersProfile-29d2b5353b3e4c499c80ddf60a4aa637">%AllUsersProfile%</a></td><td class="cell-BMX`">Program Data</td></tr><tr id="3c2b3bb2-8cf5-40a3-b998-f34bdaa3762f"><td class="cell-title"><a href="https://www.notion.so/ProgramFiles-3c2b3bb28cf540a3b998f34bdaa3762f">%ProgramFiles%</a></td><td class="cell-BMX`">Program Files</td></tr><tr id="df3903f0-e46f-4d9e-a5ff-0445c6ee215c"><td class="cell-title"><a href="https://www.notion.so/appwiz-cpl-df3903f0e46f4d9ea5ff0445c6ee215c">appwiz.cpl</a></td><td class="cell-BMX`">Programs and Features</td></tr><tr id="48abd678-d881-4cda-b19f-6d83dd59de0d"><td class="cell-title"><a href="https://www.notion.so/displayswitch-48abd678d8814cdab19f6d83dd59de0d">displayswitch</a></td><td class="cell-BMX`">Project Menu</td></tr><tr id="fd60bef1-87b5-4907-a7d5-bec1f1560c6c"><td class="cell-title"><a href="https://www.notion.so/dpapimig-fd60bef187b54907a7d5bec1f1560c6c">dpapimig</a></td><td class="cell-BMX`">Protected Content Migration</td></tr><tr id="80f20313-8c26-47d2-abb2-9cb5f105016a"><td class="cell-title"><a href="https://www.notion.so/recoverydrive-80f203138c2647d2abb29cb5f105016a">recoverydrive</a></td><td class="cell-BMX`">Recovery Media Creator</td></tr><tr id="9f858cbc-ac60-4c5d-ad31-0b5a55fea24e"><td class="cell-title"><a href="https://www.notion.so/intl-cpl-9f858cbcac604c5dad310b5a55fea24e">intl.cpl</a></td><td class="cell-BMX`">Region Settings</td></tr><tr id="16005de7-b481-4073-a889-f0a36b5a045b"><td class="cell-title"><a href="https://www.notion.so/regedit-16005de7b4814073a889f0a36b5a045b">regedit</a></td><td class="cell-BMX`">Registry Editor</td></tr><tr id="05db18ba-682f-4abe-bf00-fd4d0b544569"><td class="cell-title"><a href="https://www.notion.so/mstsc-05db18ba682f4abebf00fd4d0b544569">mstsc</a></td><td class="cell-BMX`">Remote Desktop Connection</td></tr><tr id="d6f591cc-dceb-4a0b-9056-cc0d1a384697"><td class="cell-title"><a href="https://www.notion.so/perfmon-res-d6f591ccdceb4a0b9056cc0d1a384697">perfmon /res</a></td><td class="cell-BMX`">Resource and Performance Monitor</td></tr><tr id="9f732e20-8d42-4387-bdbd-b64aafa284f2"><td class="cell-title"><a href="https://www.notion.so/rsop-msc-9f732e208d424387bdbdb64aafa284f2">rsop.msc</a></td><td class="cell-BMX`">Resultant Set of Policy</td></tr><tr id="9fb29d05-2206-4ea3-b719-09a296f42d28"><td class="cell-title"><a href="https://www.notion.so/wiaacmgr-9fb29d0522064ea3b71909a296f42d28">wiaacmgr</a></td><td class="cell-BMX`">Scanner</td></tr><tr id="e3ec5d95-c4f6-44a3-82ae-f045aceecc4e"><td class="cell-title"><a href="https://www.notion.so/wscui-cpl-e3ec5d95c4f644a382aef045aceecc4e">wscui.cpl</a></td><td class="cell-BMX`">Security and Maintenance</td></tr><tr id="0393da91-98da-4740-9b45-5c6934edfa1f"><td class="cell-title"><a href="https://www.notion.so/services-msc-0393da9198da47409b455c6934edfa1f">services.msc</a></td><td class="cell-BMX`">Services</td></tr><tr id="d27ce0f5-5edb-4e26-9795-c8f160dc4fc7"><td class="cell-title"><a href="https://www.notion.so/control-appwiz-cpl-3-d27ce0f55edb4e269795c8f160dc4fc7">control appwiz.cpl,,3</a></td><td class="cell-BMX`">Set Program Access and Computer Defaults</td></tr><tr id="10afebfe-e61d-4b58-8df5-8a771ce544da"><td class="cell-title"><a href="https://www.notion.so/shrpubw-10afebfee61d4b588df58a771ce544da">shrpubw</a></td><td class="cell-BMX`">Share Creation Wizard</td></tr><tr id="3425810c-7d6d-422b-ae19-92a764bb1012"><td class="cell-title"><a href="https://www.notion.so/fsmgmt-msc-3425810c7d6d422bae1992a764bb1012">fsmgmt.msc</a></td><td class="cell-BMX`">Shared Folders</td></tr><tr id="fcb73c34-c7a3-4a83-926c-b8cdc315f57a"><td class="cell-title"><a href="https://www.notion.so/shutdown-fcb73c34c7a34a83926cb8cdc315f57a">shutdown</a></td><td class="cell-BMX`">Shutdown Computer</td></tr><tr id="499635a5-ae93-41c1-99d0-d1ed48c22836"><td class="cell-title"><a href="https://www.notion.so/snippingtool-499635a5ae9341c199d0d1ed48c22836">snippingtool</a></td><td class="cell-BMX`">Snipping Tool</td></tr><tr id="786c6b6c-8fd1-4398-b696-9d02afd22de6"><td class="cell-title"><a href="https://www.notion.so/tabtip-786c6b6c8fd14398b6969d02afd22de6">tabtip</a></td><td class="cell-BMX`">Soft Keyboard</td></tr><tr id="fc276a44-63d2-42b7-817a-ff89b757797f"><td class="cell-title"><a href="https://www.notion.so/mmsys-cpl-fc276a4463d242b7817aff89b757797f">mmsys.cpl</a></td><td class="cell-BMX`">Sound</td></tr><tr id="6f098ea5-48f0-4458-bd87-8e42c068c7a6"><td class="cell-title"><a href="https://www.notion.so/psr-6f098ea548f04458bd878e42c068c7a6">psr</a></td><td class="cell-BMX`">Steps Recorder</td></tr><tr id="b5137417-e543-430e-8303-175aa10d24ce"><td class="cell-title"><a href="https://www.notion.so/credwiz-b5137417e543430e8303175aa10d24ce">credwiz</a></td><td class="cell-BMX`">Stored User Names and Password Wizard</td></tr><tr id="70259460-c9c5-43a1-9372-02eae5f513ff"><td class="cell-title"><a href="https://www.notion.so/mobsync-70259460c9c543a1937202eae5f513ff">mobsync</a></td><td class="cell-BMX`">Sync Center</td></tr><tr id="29639012-76dd-4a14-ae4f-943f417afdca"><td class="cell-title"><a href="https://www.notion.so/msconfig-2963901276dd4a14ae4f943f417afdca">msconfig</a></td><td class="cell-BMX`">System Configuration Utility</td></tr><tr id="83100c44-3928-455d-8119-e66169d2dcdd"><td class="cell-title"><a href="https://www.notion.so/control-mouse-83100c443928455d8119e66169d2dcdd">control mouse</a></td><td class="cell-BMX`">Mouse Properties</td></tr><tr id="9e87d85b-f131-45c3-990a-c2a64fd00405"><td class="cell-title"><a href="https://www.notion.so/SystemDrive-9e87d85bf13145c3990ac2a64fd00405">%SystemDrive%</a></td><td class="cell-BMX`">System Drive</td></tr><tr id="0812d939-9303-44e3-8527-a6b18ebc6930"><td class="cell-title"><a href="https://www.notion.so/msinfo32-0812d939930344e38527a6b18ebc6930">msinfo32</a></td><td class="cell-BMX`">System Information</td></tr><tr id="16128831-62bd-441a-b9ca-29ce51ec2afe"><td class="cell-title"><a href="https://www.notion.so/systempropertiesprotection-1612883162bd441ab9ca29ce51ec2afe">systempropertiesprotection</a></td><td class="cell-BMX`">System Protection Settings</td></tr><tr id="9bb62361-924b-45b2-875d-4a0a3f80c29e"><td class="cell-title"><a href="https://www.notion.so/systempropertiesremote-9bb62361924b45b2875d4a0a3f80c29e">systempropertiesremote</a></td><td class="cell-BMX`">System Remote Settings</td></tr><tr id="53488c30-bddd-4ce5-82ca-2601e70e3340"><td class="cell-title"><a href="https://www.notion.so/systemreset-53488c30bddd4ce582ca2601e70e3340">systemreset</a></td><td class="cell-BMX`">System Reset for Windows</td></tr><tr id="48734cd4-fd0f-419f-b833-5722391df36a"><td class="cell-title"><a href="https://www.notion.so/SystemRoot-48734cd4fd0f419fb8335722391df36a">%SystemRoot%</a></td><td class="cell-BMX`">System root</td></tr><tr id="bee309d5-e8ec-4cc8-9c10-a4c4f1ead4c8"><td class="cell-title"><a href="https://www.notion.so/launchtm-bee309d5e8ec4cc89c10a4c4f1ead4c8">launchtm</a></td><td class="cell-BMX`">Task Manager</td></tr><tr id="ebce2f5a-c483-4f0f-b70a-20b03be625f0"><td class="cell-title"><a href="https://www.notion.so/taskmgr-ebce2f5ac4834f0fb70a20b03be625f0">taskmgr</a></td><td class="cell-BMX`">Task Manager</td></tr><tr id="32a03665-e231-42ed-ab68-2bd07a48b42b"><td class="cell-title"><a href="https://www.notion.so/control-schedtasks-32a03665e23142edab682bd07a48b42b">control schedtasks</a></td><td class="cell-BMX`">Task Scheduler</td></tr><tr id="73553bde-ac0e-4c1e-b371-8ead15063648"><td class="cell-title"><a href="https://www.notion.so/taskschd-msc-73553bdeac0e4c1eb3718ead15063648">taskschd.msc</a></td><td class="cell-BMX`">Task Scheduler</td></tr><tr id="6b86e796-5310-44da-b363-e07fd0fdd593"><td class="cell-title"><a href="https://www.notion.so/control-exe-name-Microsoft-TaskbarandStartMenu-6b86e796531044dab363e07fd0fdd593">control.exe /name Microsoft.TaskbarandStartMenu</a></td><td class="cell-BMX`">Taskbar Settings</td></tr><tr id="c2873f42-94b0-438c-9219-79c5780099dd"><td class="cell-title"><a href="https://www.notion.so/Temp-c2873f4294b0438c921979c5780099dd">%Temp%</a></td><td class="cell-BMX`">Temporary Folder</td></tr><tr id="ff7c7e89-3087-4c3b-bed1-dfe14dbd0c89"><td class="cell-title"><a href="https://www.notion.so/control-exe-name-Microsoft-Troubleshooting-ff7c7e8930874c3bbed1dfe14dbd0c89">control.exe /name Microsoft.Troubleshooting</a></td><td class="cell-BMX`">Troubleshoot Settings</td></tr><tr id="2b6310bf-09ed-48e6-b37a-1c32c50701cc"><td class="cell-title"><a href="https://www.notion.so/tpm-msc-2b6310bf09ed48e6b37a1c32c50701cc">tpm.msc</a></td><td class="cell-BMX`">Trusted Platform Module Management</td></tr><tr id="b0394c59-44e6-42ca-bd5a-76aa851be15a"><td class="cell-title"><a href="https://www.notion.so/useraccountcontrolsettings-b0394c5944e642cabd5a76aa851be15a">useraccountcontrolsettings</a></td><td class="cell-BMX`">User Account Control</td></tr><tr id="d6d9fee3-6dc5-4b7c-ad5f-34cde5e4872a"><td class="cell-title"><a href="https://www.notion.so/control-exe-name-Microsoft-UserAccounts-d6d9fee36dc54b7cad5f34cde5e4872a">control.exe /name Microsoft.UserAccounts</a></td><td class="cell-BMX`">User Accounts</td></tr><tr id="ff6fd578-1ecb-498d-9bf2-e6e4321e0f7d"><td class="cell-title"><a href="https://www.notion.so/UserProfile-ff6fd5781ecb498d9bf2e6e4321e0f7d">%UserProfile%</a></td><td class="cell-BMX`">User Profile</td></tr><tr id="18bf8a85-4679-4adc-946b-2ff77aa37724"><td class="cell-title"><a href="https://www.notion.so/netstat-18bf8a8546794adc946b2ff77aa37724">netstat</a></td><td class="cell-BMX`">View Active Connections in Command Prompt</td></tr><tr id="2645d36a-64ee-4ead-bc88-9ee4b0027811"><td class="cell-title"><a href="https://www.notion.so/sndvol-2645d36a64ee4eadbc889ee4b0027811">sndvol</a></td><td class="cell-BMX`">Volume Mixer</td></tr><tr id="e2126b09-e033-4b20-bd41-0738396729bb"><td class="cell-title"><a href="https://www.notion.so/slui-e2126b09e0334b20bd410738396729bb">slui</a></td><td class="cell-BMX`">Windows Activation</td></tr><tr id="2e08bb8f-a786-4cdd-ba53-1e5bf6aa01ce"><td class="cell-title"><a href="https://www.notion.so/sdclt-2e08bb8fa7864cddba531e5bf6aa01ce">sdclt</a></td><td class="cell-BMX`">Windows Backup</td></tr><tr id="a7c0a5de-183d-4f9a-88fb-e132a248f856"><td class="cell-title"><a href="https://www.notion.so/firewall-cpl-a7c0a5de183d4f9a88fbe132a248f856">firewall.cpl</a></td><td class="cell-BMX`">Windows Defender Firewall</td></tr><tr id="11b9d3b0-05ee-4a81-8d19-fc691a37fc7d"><td class="cell-title"><a href="https://www.notion.so/wf-msc-11b9d3b005ee4a818d19fc691a37fc7d">wf.msc</a></td><td class="cell-BMX`">Windows Defender Firewall with Advanced Security</td></tr><tr id="64524e62-4f63-4499-a1e3-a5be24c0d871"><td class="cell-title"><a href="https://www.notion.so/WinDir-64524e624f634499a1e3a5be24c0d871">%WinDir%</a></td><td class="cell-BMX`">Windows Directory</td></tr><tr id="77b99521-69c0-4d07-a649-601238a37c7a"><td class="cell-title"><a href="https://www.notion.so/isoburn-77b9952169c04d07a649601238a37c7a">isoburn</a></td><td class="cell-BMX`">Windows Disk Image Burner Usage</td></tr><tr id="05551990-215f-468a-9f0a-9d0481bf6768"><td class="cell-title"><a href="https://www.notion.so/migwiz-05551990215f468a9f0a9d0481bf6768">migwiz</a></td><td class="cell-BMX`">Windows Easy Transfer</td></tr><tr id="ddb081c4-a132-4f6d-a264-0af0c63b8459"><td class="cell-title"><a href="https://www.notion.so/wfs-ddb081c4a1324f6da2640af0c63b8459">wfs</a></td><td class="cell-BMX`">Windows Fax and Scan</td></tr><tr id="ae105bc2-0642-4f05-a000-c2b603588d8c"><td class="cell-title"><a href="https://www.notion.so/control-appwiz-cpl-2-ae105bc206424f05a000c2b603588d8c">control appwiz.cpl,,2</a></td><td class="cell-BMX`">Windows Features</td></tr><tr id="00bc580f-ec8b-46d2-9bcd-751ba04368c8"><td class="cell-title"><a href="https://www.notion.so/optionalfeatures-00bc580fec8b46d29bcd751ba04368c8">optionalfeatures</a></td><td class="cell-BMX`">Windows Features</td></tr><tr id="2fb34f17-5658-4252-a787-f0de7044393f"><td class="cell-title"><a href="https://www.notion.so/fontview-2fb34f1756584252a787f0de7044393f">fontview</a></td><td class="cell-BMX`">Windows Font Viewer</td></tr><tr id="137692c7-1f13-43c9-90da-1498b7ecd24d"><td class="cell-title"><a href="https://www.notion.so/winhlp32-137692c71f1343c990da1498b7ecd24d">winhlp32</a></td><td class="cell-BMX`">Windows Help (not supported in Windows 10)</td></tr><tr id="e8b067ec-3be2-4df5-8dbf-77add254d467"><td class="cell-title"><a href="https://www.notion.so/wmimgmt-msc-e8b067ec3be24df58dbf77add254d467">wmimgmt.msc</a></td><td class="cell-BMX`">Windows Management Instrumentation</td></tr><tr id="b234df6c-5159-4510-bd14-8ac0ff08399e"><td class="cell-title"><a href="https://www.notion.so/wbemtest-b234df6c51594510bd148ac0ff08399e">wbemtest</a></td><td class="cell-BMX`">Windows Management Instrumentation Tester</td></tr><tr id="706bbce0-6a7f-409b-b8c2-173768ab9321"><td class="cell-title"><a href="https://www.notion.so/wmplayer-706bbce06a7f409bb8c2173768ab9321">wmplayer</a></td><td class="cell-BMX`">Windows Media Player</td></tr><tr id="1e3012b9-101d-4de4-a65a-ea2bc386ec4d"><td class="cell-title"><a href="https://www.notion.so/mdsched-1e3012b9101d4de4a65aea2bc386ec4d">mdsched</a></td><td class="cell-BMX`">Windows Memory Diagnostics Tool</td></tr><tr id="ef8347ec-d192-4d16-a6f8-fa65ecfb5cae"><td class="cell-title"><a href="https://www.notion.so/mblctr-ef8347ecd1924d16a6f8fa65ecfb5cae">mblctr</a></td><td class="cell-BMX`">Windows Mobility Center</td></tr><tr id="c57a0571-b097-4aae-910c-3be7e2db395e"><td class="cell-title"><a href="https://www.notion.so/powershell-c57a0571b0974aae910c3be7e2db395e">powershell</a></td><td class="cell-BMX`">Windows PowerShell</td></tr><tr id="4423bbce-cb61-40b9-9f09-f610649ef9bc"><td class="cell-title"><a href="https://www.notion.so/powershell_ise-4423bbcecb6140b99f09f610649ef9bc">powershell_ise</a></td><td class="cell-BMX`">Windows PowerShell ISE</td></tr><tr id="1ba31ae2-3a17-4a92-9ea9-258c393718de"><td class="cell-title"><a href="https://www.notion.so/msra-1ba31ae23a174a929ea9258c393718de">msra</a></td><td class="cell-BMX`">Windows Remote Assistance</td></tr><tr id="90887130-6afc-4ad1-809e-e6c655fc266b"><td class="cell-title"><a href="https://www.notion.so/wsreset-908871306afc4ad1809ee6c655fc266b">wsreset</a></td><td class="cell-BMX`">Windows Reset</td></tr><tr id="329b57a9-b6b2-4f14-86cf-17858acaca62"><td class="cell-title"><a href="https://www.notion.so/wscript-329b57a9b6b24f1486cf17858acaca62">wscript</a></td><td class="cell-BMX`">Windows Script Host Settings</td></tr><tr id="d5adf58b-74f9-4c8d-ba65-e913949f7d76"><td class="cell-title"><a href="https://www.notion.so/rstrui-d5adf58b74f94c8dba65e913949f7d76">rstrui</a></td><td class="cell-BMX`">Windows System Restore</td></tr><tr id="bbbcc5e0-6d93-4cb9-b2dd-8a68958f782f"><td class="cell-title"><a href="https://www.notion.so/wusa-bbbcc5e06d934cb9b2dd8a68958f782f">wusa</a></td><td class="cell-BMX`">Windows Update Standalone Installer</td></tr><tr id="5a9488fc-57e0-46dd-9ec0-90b3479f1011"><td class="cell-title"><a href="https://www.notion.so/winword-5a9488fc57e046dd9ec090b3479f1011">winword</a></td><td class="cell-BMX`">Word</td></tr><tr id="848f019f-865d-4254-9f13-a174e02b7ab2"><td class="cell-title"><a href="https://www.notion.so/Word-safe-848f019f865d42549f13a174e02b7ab2">Word /safe</a></td><td class="cell-BMX`">Word Safe Mode</td></tr><tr id="529b6abe-6cbe-4fbd-96bc-84bef24bd8f9"><td class="cell-title"><a href="https://www.notion.so/wordpad-529b6abe6cbe4fbd96bc84bef24bd8f9">wordpad</a></td><td class="cell-BMX`">WordPad</td></tr><tr id="5d1b4c71-2a82-4657-8456-a1d3e9959fd5"><td class="cell-title"><a href="https://www.notion.so/write-5d1b4c712a8246578456a1d3e9959fd5">write</a></td><td class="cell-BMX`">WordPad</td></tr><tr id="fc6c8333-643b-4209-9d3d-a0781f6b2ca6"><td class="cell-title"><a href="https://www.notion.so/xpsrchvw-fc6c8333643b42099d3da0781f6b2ca6">xpsrchvw</a></td><td class="cell-BMX`">XPS Viewer</td></tr><tr id="f6c4701c-9abb-4479-8533-32caf248e3b1"><td class="cell-title"><a href="https://www.notion.so/f6c4701c9abb4479853332caf248e3b1">\</a></td><td class="cell-BMX`">Open C Drive</td></tr></tbody></table></div></div></article></body></html>

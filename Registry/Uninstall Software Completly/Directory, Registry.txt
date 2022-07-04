@@ -1,0 +1,22 @@
+Computer\HKEY_USERS\.DEFAULT\Control Panel\Mouse
+
+
+Directory:-
+
+%programfiles%
+%programfiles(x86)%
+%appdata%
+
+
+Registry:-
+
+HKEY_CURRENT_USER\Software
+HKEY_LOCAL_MACHINE\SOFTWARE
+HKEY_USERS\.DEFAULT\Software
+
+*64-Bit* system users will also need to check following extra key:-
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node
+
+%temp%
+temp

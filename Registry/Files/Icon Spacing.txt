@@ -1,0 +1,5 @@
+HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics
+
+The range of values is -480 to -2730. 
+Close to -480 will be less horizontal space. 
+Close to -2750 will be more horizontal space.
